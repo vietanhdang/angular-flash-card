@@ -15,7 +15,8 @@ import { TestSetupComponent } from './components/test-setup/test-setup.component
 import { TestQuestionComponent } from './components/test-question/test-question.component';
 import { TestResultsComponent } from './components/test-results/test-results.component';
 
-import { Card } from '../../models/card.model';
+import { Card, DictionaryResponse } from '../../models/card.model';
+import { DictionaryService } from '../../services/dictionary.service';
 
 @Component({
   selector: 'app-home',
@@ -42,9 +43,14 @@ export class HomeComponent {
   autoFlipEnabled: boolean = false; // Trạng thái bật/tắt tự động lật thẻ
   totalCards: number = 0; // Tổng số thẻ
   currentCard: Card | null = null;
+  dictionaryData: DictionaryResponse | null = null;
+  dictionaries: { [word: string]: DictionaryResponse } = {};
   autoPlaySub?: Subscription;
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(
+    private cdr: ChangeDetectorRef,
+    private dictionaryService: DictionaryService,
+  ) {}
 
   onFileLoaded(loadedCards: Card[]) {
     if (loadedCards.length === 0) {
@@ -61,7 +67,23 @@ export class HomeComponent {
 
   displayCard() {
     this.currentCard = this.cards[this.currentIndex];
-    this.cdr.detectChanges();
+    if (this.dictionaries[this.currentCard.word]) {
+      this.dictionaryData = this.dictionaries[this.currentCard.word];
+      this.cdr.detectChanges();
+      return;
+    } else {
+      this.dictionaryData = null;
+    }
+
+    this.dictionaryService.getDefinition(this.currentCard.word).subscribe((definition) => {
+      if (definition.length === 0) {
+        this.dictionaryData = null;
+        return;
+      }
+      this.dictionaryData = definition[0];
+      this.dictionaries[this.currentCard!.word] = this.dictionaryData;
+      this.cdr.detectChanges();
+    });
   }
 
   handleFlip() {

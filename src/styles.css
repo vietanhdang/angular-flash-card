@@ -113,6 +113,8 @@ header h1 {
   height: 400px;
   cursor: pointer;
   position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.8s;
 }
 
 .flashcard-inner {
@@ -134,12 +136,13 @@ header h1 {
   height: 100%;
   backface-visibility: hidden;
   border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 40px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .flashcard-front {
@@ -150,6 +153,63 @@ header h1 {
   background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
   color: white;
   transform: rotateY(180deg);
+  overflow-y: auto; /* scroll nếu content dài */
+  justify-content: flex-start; /* content từ trên xuống */
+}
+
+.flashcard-back ul {
+  list-style: none; /* loại bỏ bullet */
+  margin: 10px 0 20px 0; /* margin hợp lý */
+  padding-left: 0;
+}
+
+.flashcard-back li {
+  position: relative;
+  padding-left: 20px; /* chừa chỗ cho dấu custom */
+  margin-bottom: 8px;
+}
+
+/* custom bullet nhỏ */
+.flashcard-back li::before {
+  content: '•'; /* hoặc "–" */
+  position: absolute;
+  left: 0;
+  color: rgba(255, 255, 255, 0.8); /* màu sáng, visible trên gradient */
+  font-size: 14px;
+  line-height: 1;
+}
+
+.flashcard-back {
+  overflow-y: auto;
+}
+
+.flashcard-back::-webkit-scrollbar {
+  width: 6px;
+}
+
+.flashcard-back::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.flashcard-back::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.5); /* màu trắng mờ */
+  border-radius: 3px;
+}
+
+.flashcard-back::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.flashcard-back h3.part-of-speech {
+  margin: 10px 0 5px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.flashcard-back li em {
+  font-style: italic;
+  opacity: 0.9;
+  font-size: 14px;
 }
 
 .word-type {
@@ -222,6 +282,11 @@ header h1 {
   gap: 15px;
   margin-bottom: 20px;
   flex-wrap: wrap;
+}
+
+button[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .btn {
