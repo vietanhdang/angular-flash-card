@@ -13,6 +13,9 @@
       (change)="onFileSelected($event)"
     />
     <span class="file-name" id="file-name">{{ fileName }}</span>
+    <button class="download-sample" (click)="downloadSample()">
+      <span class="btn-icon">⬇️</span> Download Sample File
+    </button>
   </div>
   <div class="mode-switch">
     <button class="btn btn-mode" id="study-mode-btn">

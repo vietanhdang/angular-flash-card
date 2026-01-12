@@ -45,4 +45,17 @@ export class HeaderComponent {
 
     reader.readAsText(file);
   }
+
+  downloadSample() {
+    fetch('assets/sample_flashcards.json')
+      .then((res) => res.blob())
+      .then((blob) => {
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'sample_flashcards.json';
+        a.click();
+        window.URL.revokeObjectURL(url);
+      });
+  }
 }
