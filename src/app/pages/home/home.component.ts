@@ -44,7 +44,7 @@ export class HomeComponent {
   totalCards: number = 0; // Tổng số thẻ
   currentCard: Card | null = null;
   dictionaryData: DictionaryResponse | null = null;
-  dictionaries: { [word: string]: DictionaryResponse } = {};
+  dictionaries: { [word: string]: DictionaryResponse | null } = {}; // Cache definitions
   autoPlaySub?: Subscription;
 
   constructor(
@@ -67,22 +67,27 @@ export class HomeComponent {
 
   displayCard() {
     this.currentCard = this.cards[this.currentIndex];
-    if (this.dictionaries[this.currentCard.word]) {
+    if (this.currentCard.word in this.dictionaries) {
       this.dictionaryData = this.dictionaries[this.currentCard.word];
       this.cdr.detectChanges();
       return;
-    } else {
-      this.dictionaryData = null;
     }
 
-    this.dictionaryService.getDefinition(this.currentCard.word).subscribe((definition) => {
-      if (definition.length === 0) {
-        this.dictionaryData = null;
-        return;
-      }
-      this.dictionaryData = definition[0];
-      this.dictionaries[this.currentCard!.word] = this.dictionaryData;
-      this.cdr.detectChanges();
+    this.dictionaryService.getDefinition(this.currentCard.word).subscribe({
+      next: (definition) => {
+        if (!definition || definition.length === 0) {
+          this.dictionaryData = null;
+        } else {
+          this.dictionaryData = definition[0];
+        }
+        this.dictionaries[this.currentCard!.word] = this.dictionaryData;
+        this.cdr.detectChanges();
+      },
+      error: (err) => {
+        console.error('Error fetching definition:', err);
+        this.dictionaryData = null; // fallback
+        this.dictionaries[this.currentCard!.word] = this.dictionaryData;
+      },
     });
   }
 
@@ -101,9 +106,21 @@ export class HomeComponent {
 
   handleNext() {
     if (this.currentIndex < this.cards.length - 1) {
-      this.currentIndex++;
-      this.isFlipped = false;
-      this.displayCard();
+      // Nếu card đang lật (isFlipped = true), lật về trước khi chuyển card
+      if (this.isFlipped) {
+        this.isFlipped = false;
+        this.cdr.detectChanges();
+
+        // Đợi animation lật hoàn thành (0.6s theo CSS) trước khi chuyển card mới
+        setTimeout(() => {
+          this.currentIndex++;
+          this.displayCard();
+        }, 600);
+      } else {
+        this.currentIndex++;
+        this.isFlipped = false;
+        this.displayCard();
+      }
     }
   }
 
