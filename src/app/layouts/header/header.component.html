@@ -1,0 +1,25 @@
+<header>
+  <h1>📚 Flashcard Learning App</h1>
+  <!-- <p class="subtitle">Unit 5 - English Vocabulary</p> -->
+  <div class="upload-section">
+    <label for="file-upload" class="upload-btn">
+      <span class="btn-icon">📁</span> Upload JSON File
+    </label>
+    <input
+      type="file"
+      id="file-upload"
+      accept=".json"
+      style="display: none"
+      (change)="onFileSelected($event)"
+    />
+    <span class="file-name" id="file-name">{{ fileName }}</span>
+  </div>
+  <div class="mode-switch">
+    <button class="btn btn-mode" id="study-mode-btn">
+      <span class="btn-icon">📖</span> Study Mode
+    </button>
+    <button class="btn btn-mode" id="test-mode-btn">
+      <span class="btn-icon">✏️</span> Test Mode
+    </button>
+  </div>
+</header>

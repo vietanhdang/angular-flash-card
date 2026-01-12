@@ -1,0 +1,29 @@
+<div class="test-questions" id="test-questions">
+  <div class="test-header">
+    <div class="test-progress-info">
+      <span class="test-question-number"
+        >Question <span id="test-current">1</span> / <span id="test-total">10</span></span
+      >
+      <span class="test-score">Score: <span id="test-score">0</span></span>
+    </div>
+    <div class="test-progress-bar">
+      <div class="test-progress-fill" id="test-progress-fill"></div>
+    </div>
+  </div>
+
+  <div class="question-card">
+    <div class="question-word" id="question-word">Loading...</div>
+    <div class="question-pronunciation" id="question-pronunciation">/pronunciation/</div>
+    <button class="speaker-btn-test" id="speaker-btn-test" title="Listen to pronunciation">
+      🔊
+    </button>
+  </div>
+
+  <div class="answer-options" id="answer-options">
+    <!-- Answer buttons will be generated here -->
+  </div>
+
+  <button class="btn btn-secondary" id="next-question-btn" style="display: none">
+    Next Question <span class="btn-icon">▶</span>
+  </button>
+</div>

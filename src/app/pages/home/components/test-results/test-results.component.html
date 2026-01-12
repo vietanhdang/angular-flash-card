@@ -1,0 +1,75 @@
+<div class="test-results" id="test-results">
+  <div class="results-header">
+    <h2 class="results-title">🎉 Quiz Complete!</h2>
+    <div class="results-score">
+      <div class="score-circle">
+        <svg width="200" height="200" viewBox="0 0 200 200">
+          <circle
+            cx="100"
+            cy="100"
+            r="90"
+            fill="none"
+            stroke="rgba(255,255,255,0.2)"
+            stroke-width="15"
+          />
+          <circle
+            id="score-circle"
+            cx="100"
+            cy="100"
+            r="90"
+            fill="none"
+            stroke="#4caf50"
+            stroke-width="15"
+            stroke-dasharray="565.48"
+            stroke-dashoffset="565.48"
+            stroke-linecap="round"
+            transform="rotate(-90 100 100)"
+            style="transition: stroke-dashoffset 1s ease"
+          />
+          <text
+            x="100"
+            y="100"
+            text-anchor="middle"
+            dy=".3em"
+            fill="white"
+            font-size="48"
+            font-weight="bold"
+            id="score-percentage"
+          >
+            0%
+          </text>
+        </svg>
+      </div>
+      <div class="score-details">
+        <p class="score-text">
+          You got <span id="correct-answers">0</span> out of
+          <span id="total-questions">0</span> correct!
+        </p>
+        <p class="score-grade" id="score-grade">Excellent!</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="results-actions">
+    <button class="btn btn-primary" id="review-mistakes-btn">
+      <span class="btn-icon">🔍</span> Review Mistakes
+    </button>
+    <button class="btn btn-secondary" id="retry-mistakes-btn">
+      <span class="btn-icon">🔄</span> Retry Wrong Answers
+    </button>
+    <button class="btn btn-secondary" id="new-test-btn">
+      <span class="btn-icon">✨</span> New Quiz
+    </button>
+    <button class="btn btn-secondary" id="back-to-study-btn">
+      <span class="btn-icon">📖</span> Back to Study
+    </button>
+  </div>
+
+  <!-- Review Section -->
+  <div class="review-section" id="review-section" style="display: none">
+    <h3 class="review-title">📋 Wrong Answers Review</h3>
+    <div class="review-list" id="review-list">
+      <!-- Review items will be generated here -->
+    </div>
+  </div>
+</div>

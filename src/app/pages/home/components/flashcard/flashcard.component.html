@@ -1,0 +1,25 @@
+<div class="flashcard-container">
+  <div class="flashcard" id="flashcard" (click)="onFlip()" [class.flipped]="isFlipped">
+    <div class="flashcard-inner">
+      <div class="flashcard-front">
+        <div class="word-type" id="word-type">{{ card?.type || 'N' }}</div>
+        <h2 class="word" id="word">{{ card?.word || 'Loading...' }}</h2>
+        <button class="speaker-btn" id="speaker-btn" title="Listen to pronunciation">🔊</button>
+        <p class="pronunciation" id="pronunciation">
+          {{ card?.pronunciation || '/pronunciation/' }}
+        </p>
+        <p class="flip-hint">👆 Click to flip</p>
+      </div>
+      <div class="flashcard-back">
+        <h2 class="meaning" id="meaning">{{ card?.meaning || 'Nghĩa tiếng Việt' }}</h2>
+        <div class="back-info">
+          <p class="word-small" id="word-back">{{ card?.word || 'Loading...' }}</p>
+          <p class="pronunciation-small" id="pronunciation-back">
+            {{ card?.pronunciation || '/pronunciation/' }}
+          </p>
+        </div>
+        <p class="flip-hint">👆 Click to flip back</p>
+      </div>
+    </div>
+  </div>
+</div>
