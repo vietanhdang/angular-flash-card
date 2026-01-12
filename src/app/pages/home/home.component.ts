@@ -1,6 +1,7 @@
 import { Component, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { interval, Subscription } from 'rxjs';
+import { HostListener } from '@angular/core';
 // import { RouterLink } from '@angular/router';
 
 import { HeaderComponent } from '../../layouts/header/header.component';
@@ -118,6 +119,29 @@ export class HomeComponent {
     if (this.autoPlaySub) {
       this.handleAutoPlay(); // Stop
       this.handleAutoPlay(); // Start with new timing
+    }
+  }
+
+  @HostListener('window:keydown', ['$event'])
+  handleKeyPress(event: KeyboardEvent) {
+    if (!this.currentCard) return;
+
+    switch (event.key) {
+      case 'ArrowRight':
+        this.handleNext();
+        break;
+      case 'ArrowLeft':
+        this.handlePrevious();
+        break;
+      case ' ':
+      case 'Enter':
+        event.preventDefault();
+        this.handleFlip();
+        break;
+      case 's':
+      case 'S':
+        this.handleShuffle();
+        break;
     }
   }
 }

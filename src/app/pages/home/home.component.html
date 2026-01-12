@@ -13,6 +13,8 @@
   (onPrevious)="handlePrevious()"
   (onNext)="handleNext()"
   (onShuffle)="handleShuffle()"
+  [currentIndex]="currentIndex"
+  [totalCards]="totalCards"
 ></app-controls>
 
 <app-mode-toggle
