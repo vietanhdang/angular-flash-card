@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { interval, Subscription } from 'rxjs';
 // import { RouterLink } from '@angular/router';
@@ -43,6 +43,8 @@ export class HomeComponent {
   currentCard: Card | null = null;
   autoPlaySub?: Subscription;
 
+  constructor(private cdr: ChangeDetectorRef) {}
+
   onFileLoaded(loadedCards: Card[]) {
     if (loadedCards.length === 0) {
       alert('The loaded file contains no cards.');
@@ -58,10 +60,12 @@ export class HomeComponent {
 
   displayCard() {
     this.currentCard = this.cards[this.currentIndex];
+    this.cdr.detectChanges();
   }
 
   handleFlip() {
     this.isFlipped = !this.isFlipped;
+    this.cdr.detectChanges();
   }
 
   handlePrevious() {

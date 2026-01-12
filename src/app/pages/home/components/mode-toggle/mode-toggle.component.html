@@ -1,9 +1,20 @@
 <div class="mode-toggle">
-  <button class="btn btn-small" id="auto-play-btn" (click)="onAutoPlayClick()">
-    <span class="btn-icon">▶️</span> Auto Play
+  <button
+    class="btn btn-small"
+    id="auto-play-btn"
+    (click)="onAutoPlayClick()"
+    [class.active]="isAutoPlaying"
+  >
+    <span class="btn-icon">{{ isAutoPlaying ? '⏸️' : '▶️' }}</span>
+    {{ isAutoPlaying ? 'Stop' : 'Auto Play' }}
   </button>
   <label class="toggle-label">
-    <input type="checkbox" id="auto-flip-toggle" (change)="onAutoFlipChange($event)" />
+    <input
+      type="checkbox"
+      id="auto-flip-toggle"
+      [checked]="autoFlipEnabled"
+      (change)="onAutoFlipChange($event)"
+    />
     <span class="toggle-slider"></span>
     <span class="toggle-text">Auto Flip</span>
   </label>

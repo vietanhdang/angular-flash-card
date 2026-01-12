@@ -16,6 +16,8 @@
 ></app-controls>
 
 <app-mode-toggle
+  [autoFlipEnabled]="autoFlipEnabled"
+  [isAutoPlaying]="autoPlaySub !== undefined"
   (onAutoPlay)="handleAutoPlay()"
   (onAutoFlipChangeEvent)="handleAutoFlip($event)"
 ></app-mode-toggle>

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -11,6 +11,8 @@ import { CommonModule } from '@angular/common';
 export class ModeToggleComponent {
   // TODO: Thêm @Output() để emit events: onAutoPlay, onAutoFlipChange
   // TODO: Thêm properties cho auto play và auto flip state
+  @Input() autoFlipEnabled: boolean = false;
+  @Input() isAutoPlaying: boolean = false;
   @Output() onAutoPlay = new EventEmitter<void>();
   @Output() onAutoFlipChangeEvent = new EventEmitter<boolean>();
 
