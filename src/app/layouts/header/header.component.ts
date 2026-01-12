@@ -47,7 +47,7 @@ export class HeaderComponent {
   }
 
   downloadSample() {
-    fetch('assets/sample_flashcards.json')
+    fetch('sample_flashcards.json')
       .then((res) => res.blob())
       .then((blob) => {
         const url = window.URL.createObjectURL(blob);
