@@ -47,6 +47,14 @@ export class HomeComponent {
   dictionaries: { [word: string]: DictionaryResponse | null } = {}; // Cache definitions
   autoPlaySub?: Subscription;
 
+  // Test Mode Variables
+  testMode: boolean = false;
+  testQuestions: Card[] = [];
+  currentTestQuestion = 0;
+  testScore = 0;
+  selectedQuestionCount = 10;
+  wrongAnswers: Card[] = [];
+
   constructor(
     private cdr: ChangeDetectorRef,
     private dictionaryService: DictionaryService,
@@ -182,5 +190,9 @@ export class HomeComponent {
         this.handleShuffle();
         break;
     }
+  }
+
+  onTestModeChange(isTestMode: boolean) {
+    this.testMode = isTestMode;
   }
 }

@@ -1,5 +1,9 @@
 <!-- TODO: Pass data từ component vào các @Input() -->
-<app-header (fileLoaded)="onFileLoaded($event)"></app-header>
+<app-header
+  (fileLoaded)="onFileLoaded($event)"
+  [testMode]="testMode"
+  (testModeChange)="onTestModeChange($event)"
+></app-header>
 
 <app-stats [currentCard]="currentIndex + 1" [totalCards]="totalCards"></app-stats>
 
@@ -27,10 +31,10 @@
 
 <!-- Test Mode Section -->
 <!-- TODO: Sử dụng *ngIf để điều khiển hiển thị các component test -->
-<div class="test-mode-container" id="test-mode-container" style="display: none">
+<!-- <div class="test-mode-container" id="test-mode-container" style="display: none">
   <app-test-setup></app-test-setup>
 
   <app-test-question></app-test-question>
 
   <app-test-results></app-test-results>
-</div>
+</div> -->

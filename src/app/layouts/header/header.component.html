@@ -17,12 +17,22 @@
       <span class="btn-icon">⬇️</span> Download Sample File
     </button>
   </div>
-  <div class="mode-switch">
-    <button class="btn btn-mode" id="study-mode-btn">
+  <!-- <div class="mode-switch">
+    <button
+      class="btn btn-mode"
+      id="study-mode-btn"
+      [class.active]="!testMode"
+      (click)="onTestModeChange(false)"
+    >
       <span class="btn-icon">📖</span> Study Mode
     </button>
-    <button class="btn btn-mode" id="test-mode-btn">
+    <button
+      class="btn btn-mode"
+      id="test-mode-btn"
+      [class.active]="testMode"
+      (click)="onTestModeChange(true)"
+    >
       <span class="btn-icon">✏️</span> Test Mode
     </button>
-  </div>
+  </div> -->
 </header>

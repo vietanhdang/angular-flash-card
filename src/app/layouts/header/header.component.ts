@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { Card } from '../../models/card.model';
 
@@ -10,6 +10,8 @@ import { Card } from '../../models/card.model';
 })
 export class HeaderComponent {
   @Output() fileLoaded = new EventEmitter<Card[]>();
+  @Output() testModeChange = new EventEmitter<boolean>();
+  @Input() testMode: boolean = false;
   fileName: string = 'No file selected';
 
   onFileSelected(event: Event): void {
@@ -57,5 +59,9 @@ export class HeaderComponent {
         a.click();
         window.URL.revokeObjectURL(url);
       });
+  }
+
+  onTestModeChange(isTestMode: boolean) {
+    this.testModeChange.emit(isTestMode);
   }
 }
