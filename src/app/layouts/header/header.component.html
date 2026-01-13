@@ -1,38 +1,35 @@
-<header>
-  <h1>📚 Flashcard Learning App</h1>
-  <!-- <p class="subtitle">Unit 5 - English Vocabulary</p> -->
-  <div class="upload-section">
-    <label for="file-upload" class="upload-btn">
-      <span class="btn-icon">📁</span> Upload JSON File
+<header class="text-center mb-6 sm:mb-8 text-white">
+  <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-2 sm:mb-3 drop-shadow-lg">
+    📚 Flashcard Learning App
+  </h1>
+  <!-- <p class="text-base sm:text-lg md:text-xl opacity-90">Unit 5 - English Vocabulary</p> -->
+  <div
+    class="mt-4 sm:mt-6 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 flex-wrap"
+  >
+    <label
+      for="file-upload"
+      class="bg-white text-primary-light px-6 sm:px-8 py-3 rounded-xl font-semibold cursor-pointer transition-all hover:bg-gray-100 hover:-translate-y-0.5 shadow-lg hover:shadow-xl flex items-center gap-2 w-full sm:w-auto justify-center"
+    >
+      <span class="text-xl">📁</span>
+      <span class="text-sm sm:text-base">Upload JSON File</span>
     </label>
     <input
       type="file"
       id="file-upload"
       accept=".json"
-      style="display: none"
+      class="hidden"
       (change)="onFileSelected($event)"
     />
-    <span class="file-name" id="file-name">{{ fileName }}</span>
-    <button class="download-sample" (click)="downloadSample()">
-      <span class="btn-icon">⬇️</span> Download Sample File
+    <span
+      class="bg-white/20 backdrop-blur-lg px-4 py-2 rounded-lg text-sm sm:text-base max-w-full truncate"
+      >{{ fileName }}</span
+    >
+    <button
+      class="bg-white text-primary-light px-6 sm:px-8 py-3 rounded-xl font-semibold cursor-pointer transition-all hover:bg-gray-100 hover:-translate-y-0.5 shadow-lg hover:shadow-xl flex items-center gap-2 w-full sm:w-auto justify-center"
+      (click)="downloadSample()"
+    >
+      <span class="text-xl">⬇️</span>
+      <span class="text-sm sm:text-base">Download Sample</span>
     </button>
   </div>
-  <!-- <div class="mode-switch">
-    <button
-      class="btn btn-mode"
-      id="study-mode-btn"
-      [class.active]="!testMode"
-      (click)="onTestModeChange(false)"
-    >
-      <span class="btn-icon">📖</span> Study Mode
-    </button>
-    <button
-      class="btn btn-mode"
-      id="test-mode-btn"
-      [class.active]="testMode"
-      (click)="onTestModeChange(true)"
-    >
-      <span class="btn-icon">✏️</span> Test Mode
-    </button>
-  </div> -->
 </header>

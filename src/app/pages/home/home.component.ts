@@ -11,9 +11,9 @@ import { StatsComponent } from './components/stats/stats.component';
 import { FlashcardComponent } from './components/flashcard/flashcard.component';
 import { ControlsComponent } from './components/controls/controls.component';
 import { ModeToggleComponent } from './components/mode-toggle/mode-toggle.component';
-import { TestSetupComponent } from './components/test-setup/test-setup.component';
-import { TestQuestionComponent } from './components/test-question/test-question.component';
-import { TestResultsComponent } from './components/test-results/test-results.component';
+// import { TestSetupComponent } from './components/test-setup/test-setup.component';
+// import { TestQuestionComponent } from './components/test-question/test-question.component';
+// import { TestResultsComponent } from './components/test-results/test-results.component';
 
 import { Card, DictionaryResponse } from '../../models/card.model';
 import { DictionaryService } from '../../services/dictionary.service';
@@ -28,9 +28,9 @@ import { DictionaryService } from '../../services/dictionary.service';
     FlashcardComponent,
     ControlsComponent,
     ModeToggleComponent,
-    TestSetupComponent,
-    TestQuestionComponent,
-    TestResultsComponent,
+    // TestSetupComponent,
+    // TestQuestionComponent,
+    // TestResultsComponent,
     HeaderComponent,
   ],
   templateUrl: './home.component.html',
@@ -49,11 +49,6 @@ export class HomeComponent {
 
   // Test Mode Variables
   testMode: boolean = false;
-  testQuestions: Card[] = [];
-  currentTestQuestion = 0;
-  testScore = 0;
-  selectedQuestionCount = 10;
-  wrongAnswers: Card[] = [];
 
   constructor(
     private cdr: ChangeDetectorRef,

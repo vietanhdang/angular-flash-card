@@ -1,20 +1,35 @@
-<div class="controls">
+<div class="flex flex-wrap justify-center gap-2 sm:gap-4 mb-4 sm:mb-6">
   <button
-    class="btn btn-secondary"
+    class="bg-white/20 backdrop-blur-lg text-white px-4 sm:px-8 py-3 rounded-xl font-semibold cursor-pointer transition-all hover:bg-white/30 hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center gap-2 flex-1 sm:flex-none justify-center min-w-[100px]"
     id="prev-btn"
     (click)="onPreviousClick()"
     [disabled]="disablePrevious"
   >
-    <span class="btn-icon">◀</span> Previous
+    <span class="text-lg">◀</span>
+    <span class="text-sm sm:text-base">Previous</span>
   </button>
-  <button class="btn btn-primary" id="shuffle-btn" (click)="onShuffleClick()">
-    <span class="btn-icon">🔀</span> Shuffle
+  <button
+    class="bg-white text-primary-light px-4 sm:px-8 py-3 rounded-xl font-semibold cursor-pointer transition-all hover:bg-gray-100 hover:-translate-y-0.5 shadow-lg flex items-center gap-2 justify-center min-w-[100px]"
+    id="shuffle-btn"
+    (click)="onShuffleClick()"
+  >
+    <span class="text-lg">🔀</span>
+    <span class="text-sm sm:text-base">Shuffle</span>
   </button>
-  <button class="btn btn-secondary" id="next-btn" (click)="onNextClick()" [disabled]="disableNext">
-    Next <span class="btn-icon">▶</span>
+  <button
+    class="bg-white/20 backdrop-blur-lg text-white px-4 sm:px-8 py-3 rounded-xl font-semibold cursor-pointer transition-all hover:bg-white/30 hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center gap-2 flex-1 sm:flex-none justify-center min-w-[100px]"
+    id="next-btn"
+    (click)="onNextClick()"
+    [disabled]="disableNext"
+  >
+    <span class="text-sm sm:text-base">Next</span>
+    <span class="text-lg">▶</span>
   </button>
 </div>
-
-<div class="progress-bar">
-  <div class="progress-fill" id="progress-fill" [ngStyle]="{ width: progress + '%' }"></div>
+<div class="w-full h-2 bg-white/30 rounded-full overflow-hidden mb-4 sm:mb-6">
+  <div
+    class="h-full bg-white rounded-full transition-all duration-300"
+    id="progress-fill"
+    [ngStyle]="{ width: progress + '%' }"
+  ></div>
 </div>

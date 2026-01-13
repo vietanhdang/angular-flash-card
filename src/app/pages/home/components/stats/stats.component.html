@@ -1,12 +1,16 @@
-<div class="stats">
-  <div class="stat-item">
-    <span class="stat-label">Card:</span>
-    <span class="stat-value" id="current-card">{{ currentCard }}</span>
-    <span class="stat-value"> / </span>
-    <span class="stat-value" id="total-cards">{{ totalCards }}</span>
+<div class="flex flex-wrap justify-center gap-4 sm:gap-8 md:gap-10 mb-6 sm:mb-8">
+  <div
+    class="bg-white/20 backdrop-blur-lg px-4 sm:px-6 py-3 rounded-xl text-white text-base sm:text-lg font-semibold"
+  >
+    <span class="font-bold mr-2">Card:</span>
+    <span id="current-card">{{ currentCard }}</span>
+    <span> / </span>
+    <span id="total-cards">{{ totalCards }}</span>
   </div>
-  <div class="stat-item">
-    <span class="stat-label">Progress:</span>
-    <span class="stat-value" id="progress-percent">{{ progressPercent }}%</span>
+  <div
+    class="bg-white/20 backdrop-blur-lg px-4 sm:px-6 py-3 rounded-xl text-white text-base sm:text-lg font-semibold"
+  >
+    <span class="font-bold mr-2">Progress:</span>
+    <span id="progress-percent">{{ progressPercent }}%</span>
   </div>
 </div>

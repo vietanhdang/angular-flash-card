@@ -1,21 +1,29 @@
-<div class="mode-toggle">
+<div class="flex flex-col sm:flex-row justify-center items-stretch sm:items-center gap-3 sm:gap-5">
   <button
-    class="btn btn-small"
+    class="px-5 py-3 rounded-xl text-sm sm:text-base font-semibold cursor-pointer transition-all bg-white/20 backdrop-blur-lg text-white hover:bg-white/30 hover:-translate-y-0.5 flex items-center justify-center gap-2"
     id="auto-play-btn"
     (click)="onAutoPlayClick()"
-    [class.active]="isAutoPlaying"
+    [class.!bg-white]="isAutoPlaying"
+    [class.!text-primary-light]="isAutoPlaying"
   >
-    <span class="btn-icon">{{ isAutoPlaying ? '⏸️' : '▶️' }}</span>
-    {{ isAutoPlaying ? 'Stop' : 'Auto Play' }}
+    <span class="text-lg">{{ isAutoPlaying ? '\u23f8\ufe0f' : '\u25b6\ufe0f' }}</span>
+    <span>{{ isAutoPlaying ? 'Stop' : 'Auto Play' }}</span>
   </button>
-  <label class="toggle-label">
+  <label
+    class="flex items-center gap-3 cursor-pointer bg-white/20 backdrop-blur-lg px-5 py-3 rounded-xl min-h-[44px]"
+  >
     <input
       type="checkbox"
       id="auto-flip-toggle"
+      class="hidden"
       [checked]="autoFlipEnabled"
       (change)="onAutoFlipChange($event)"
     />
-    <span class="toggle-slider"></span>
-    <span class="toggle-text">Auto Flip</span>
+    <span
+      class="relative w-12 h-6 bg-white/30 rounded-full transition-all after:content-[''] after:absolute after:w-5 after:h-5 after:rounded-full after:bg-white after:top-0.5 after:left-0.5 after:transition-all"
+      [class.!bg-green-500]="autoFlipEnabled"
+      [class.after:translate-x-6]="autoFlipEnabled"
+    ></span>
+    <span class="text-white font-semibold text-sm sm:text-base">Auto Flip</span>
   </label>
 </div>

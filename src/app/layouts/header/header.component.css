@@ -1,12 +1,1 @@
-.download-sample {
-  border: none;
-  padding: 8px 12px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 14px;
-  display: flex;
-  align-items: center;
-  background-color: #4caf50;
-  color: white;
-  gap: 4px;
-}
+/* Header styles are now handled by Tailwind utility classes in header.component.html */

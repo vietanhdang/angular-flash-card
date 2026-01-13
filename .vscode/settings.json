@@ -9,5 +9,14 @@
   "angular.format.enable": false,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
+  },
+  /* --- Thêm đoạn này để ignore lỗi CSS Tailwind --- */
+  "css.lint.unknownAtRules": "ignore",
+  "scss.lint.unknownAtRules": "ignore",
+  "less.lint.unknownAtRules": "ignore",
+
+  /* Khuyên dùng: Để VS Code hiểu cú pháp Tailwind tốt hơn */
+  "files.associations": {
+    "*.css": "tailwindcss"
   }
 }
