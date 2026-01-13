@@ -11,6 +11,13 @@
   backface-visibility: hidden;
 }
 
+@supports (-webkit-touch-callout: none) {
+  .backface-hidden {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+}
+
 .rotate-y-180 {
   transform: rotateY(180deg);
 }
