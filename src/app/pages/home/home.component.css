@@ -1,0 +1,53 @@
+.header-container {
+  transition: all 0.6s ease-in-out;
+  width: 100%;
+}
+
+.header-container.centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  animation: fadeIn 0.5s ease-in;
+}
+
+.header-container.top {
+  animation: moveToTop 0.6s ease-in-out;
+}
+
+.content-container {
+  animation: fadeInUp 0.6s ease-in-out 0.3s both;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes moveToTop {
+  from {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  to {
+    min-height: 0;
+    display: block;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

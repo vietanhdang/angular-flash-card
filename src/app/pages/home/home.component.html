@@ -1,33 +1,37 @@
 <!-- TODO: Pass data từ component vào các @Input() -->
-<app-header
-  (fileLoaded)="onFileLoaded($event)"
-  [testMode]="testMode"
-  (testModeChange)="onTestModeChange($event)"
-></app-header>
+<div class="header-container" [class.centered]="totalCards === 0" [class.top]="totalCards > 0">
+  <app-header
+    (fileLoaded)="onFileLoaded($event)"
+    [testMode]="testMode"
+    (testModeChange)="onTestModeChange($event)"
+  ></app-header>
+</div>
 
-<app-stats [currentCard]="currentIndex + 1" [totalCards]="totalCards"></app-stats>
+<div class="max-w-150 m-auto content-container" *ngIf="totalCards > 0">
+  <app-stats [currentCard]="currentIndex + 1" [totalCards]="totalCards"></app-stats>
 
-<app-flashcard
-  [card]="currentCard"
-  [dictionaryData]="dictionaryData"
-  (flipCard)="handleFlip()"
-  [isFlipped]="isFlipped"
-></app-flashcard>
+  <app-flashcard
+    [card]="currentCard"
+    [dictionaryData]="dictionaryData"
+    (flipCard)="handleFlip()"
+    [isFlipped]="isFlipped"
+  ></app-flashcard>
 
-<app-controls
-  (onPrevious)="handlePrevious()"
-  (onNext)="handleNext()"
-  (onShuffle)="handleShuffle()"
-  [currentIndex]="currentIndex"
-  [totalCards]="totalCards"
-></app-controls>
+  <app-controls
+    (onPrevious)="handlePrevious()"
+    (onNext)="handleNext()"
+    (onShuffle)="handleShuffle()"
+    [currentIndex]="currentIndex"
+    [totalCards]="totalCards"
+  ></app-controls>
 
-<app-mode-toggle
-  [autoFlipEnabled]="autoFlipEnabled"
-  [isAutoPlaying]="autoPlaySub !== undefined"
-  (onAutoPlay)="handleAutoPlay()"
-  (onAutoFlipChangeEvent)="handleAutoFlip($event)"
-></app-mode-toggle>
+  <app-mode-toggle
+    [autoFlipEnabled]="autoFlipEnabled"
+    [isAutoPlaying]="autoPlaySub !== undefined"
+    (onAutoPlay)="handleAutoPlay()"
+    (onAutoFlipChangeEvent)="handleAutoFlip($event)"
+  ></app-mode-toggle>
+</div>
 
 <!-- Test Mode Section -->
 <!-- TODO: Sử dụng *ngIf để điều khiển hiển thị các component test -->
