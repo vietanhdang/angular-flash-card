@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { Card, DictionaryResponse } from '../../../../models/card.model';
@@ -16,6 +16,10 @@ export class FlashcardComponent {
   @Input() isFlipped: boolean = false;
   @Output() flipCard = new EventEmitter<void>();
 
+  isLoadingAudio: boolean = false;
+
+  constructor(private cdr: ChangeDetectorRef) {}
+
   onFlip() {
     this.flipCard.emit();
   }
@@ -25,10 +29,19 @@ export class FlashcardComponent {
     if (this.dictionaryData && this.dictionaryData.phonetics.length > 0) {
       const audioUrl = this.dictionaryData.phonetics.find((p) => p.audio)?.audio;
       if (audioUrl) {
+        this.isLoadingAudio = true;
         const audio = new Audio(audioUrl);
-        audio.play().catch((error) => {
-          console.error('Error playing audio:', error);
-        });
+        audio
+          .play()
+          .catch((error) => {
+            console.error('Error playing audio:', error);
+          })
+          .finally(() => {
+            setTimeout(() => {
+              this.isLoadingAudio = false;
+              this.cdr.detectChanges();
+            }, 1000);
+          });
       }
     }
   }

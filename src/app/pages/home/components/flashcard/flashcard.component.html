@@ -21,7 +21,7 @@
           id="speaker-btn"
           title="Listen to pronunciation"
           (click)="playPronunciation($event)"
-          [disabled]="!pronunciationAvailable"
+          [disabled]="!pronunciationAvailable || isLoadingAudio"
         >
           🔊
         </button>
